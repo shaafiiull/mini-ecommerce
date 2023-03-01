@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from "react";
+import useCart from "../../hooks/useCart";
+import useProduct from "../../hooks/useProducts";
 import { addToDb, getStoredCart } from "../../utilities/fakedb";
 import Cart from "../Cart/Cart";
 import Product from "../Product/Product";
 import "./Shop.css";
 
 const Shop = () => {
-  const [products, setProducts] = useState([]);
-  const [cart, setCart] = useState([]);
-  useEffect(() => {
-    fetch("products.json")
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
-  }, []);
+  //   const [products, setProducts] = useState([]);
+  /*     const [cart, setCart] = useState([]);
+    useEffect(() => {
+      fetch("products.json")
+        .then((res) => res.json())
+        .then((data) => setProducts(data));
+    }, []); */
 
-  useEffect(() => {
+  /*   useEffect(() => {
     const storedCart = getStoredCart();
     const savedCart = [];
     for (const id in storedCart) {
@@ -25,7 +27,9 @@ const Shop = () => {
       }
     }
     setCart(savedCart);
-  }, [products]);
+  }, [products]); */
+  const [products, setProducts] = useProduct(); // using custom hook
+  const [cart, setCart] = useCart(products); // using custom hook
   const handleAddToCart = (selectedProduct) => {
     console.log(selectedProduct); // checking if the add to cart btn is working
     let newCart = [];

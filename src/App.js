@@ -1,8 +1,8 @@
-import logo from "./logo.svg";
 import "./App.css";
 import Header from "./components/Header/Header";
 import { Route, Routes } from "react-router-dom";
 import Shop from "./components/Shop/Shop";
+import Orders from "./components/Orders/Orders";
 
 function App() {
   return (
@@ -11,6 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Shop></Shop>}></Route>
         <Route path="/shop" element={<Shop></Shop>}></Route>
+        <Route path="/orders" element={<Orders></Orders>}></Route>
       </Routes>
     </div>
   );
